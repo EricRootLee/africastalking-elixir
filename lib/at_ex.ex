@@ -120,5 +120,5 @@ defmodule AtEx do
 
   """
 
-  defdelegate fetch_sms(map), to: Sms
+  defdelegate fetch_sms(map), to: Sms.Bulk
 end

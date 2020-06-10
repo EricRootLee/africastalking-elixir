@@ -124,10 +124,7 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
   - `lastReceivedId` - (optional) ID of the subscription you believe to be your last. Set it to 0 to for the first time.
 
   ## Example
-      iex> AtEx.Gateway.Sms.create_subscription(%{
-      ...>   shortCode: "1234",
-      ...>   keyword: "keyword",
-      ...> })
+      iex> AtEx.Gateway.Sms.PremiumSubscriptions.fetch_subscription()
       {:ok, result}
   """
   @spec fetch_subscriptions() :: {:error, any()} | {:ok, any()}
@@ -165,7 +162,7 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
   - `phoneNumber` - phone number to be unsubscribed
 
   ## Example
-      iex> AtEx.Gateway.Sms.delete_subscription(%{ phoneNumber: "+2541231111"})
+      iex> AtEx.Gateway.Sms.PremiumSubscriptions.delete_subscription(%{ phoneNumber: "+2541231111"})
       {:ok,  %{"description" => "Succeeded", "status" => "Success"}}
   """
   @spec delete_subscription(map()) :: {:error, any()} | {:ok, any()}
