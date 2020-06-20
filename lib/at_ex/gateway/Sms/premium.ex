@@ -62,8 +62,6 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
     end
   end
 
-
-
   @doc """
   This function makes a post request to subscribe to premium sms content via the Africa's talking subscription endpoint, this
   function accepts an map of parameters.
@@ -93,9 +91,6 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
           |> Map.put(:shortCode, shortcode)
           |> Map.put(:keyword, keyword)
           |> Map.put(:checkoutToken, token)
-
-          IO.inspect(params)
-
 
         with {:ok, %{status: 201} = res} <- post("/subscription/create", params) do
           {:ok, Jason.decode!(res.body)}
@@ -139,7 +134,6 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
       |> Map.put(:shortCode, shortcode)
       |> Map.put(:keyword, keyword)
 
-
     with {:ok, %{status: 200} = res} <- get("/subscription", query: params) do
       {:ok, Jason.decode!(res.body)}
     else
@@ -177,7 +171,6 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
       |> Map.put(:shortCode, shortcode)
       |> Map.put(:keyword, keyword)
 
-
     with {:ok, %{status: 201} = res} <- post("/subscription/delete", params) do
       {:ok, Jason.decode!(res.body)}
     else
@@ -188,6 +181,4 @@ defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
         {:error, message}
     end
   end
-
 end
-
