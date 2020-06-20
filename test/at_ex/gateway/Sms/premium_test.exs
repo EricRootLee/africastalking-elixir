@@ -73,11 +73,6 @@ defmodule AtEx.Gateway.SmsTest do
   end
 
   describe "Sms Gateway/Premium" do
-
-
-
-
-
     # Checkout token tests need their own mock calls, or we would need
     # separate phone numbers for each test.  This way values can be
     # reused.
@@ -95,7 +90,9 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:ok, token} = PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+      assert {:ok, token} =
+               PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+
       assert token == @checkout_token
     end
 
@@ -112,7 +109,8 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:error, message} = PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+      assert {:error, message} =
+               PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
 
       assert message == "Failure - Error Message"
     end
@@ -126,7 +124,9 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:error, message} = PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+      assert {:error, message} =
+               PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+
       assert message = "500 - Error Message"
     end
 
@@ -143,7 +143,8 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:error, message} = PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
+      assert {:error, message} =
+               PremiumSubscriptions.generate_checkout_token(@checkout_token_phonenumber)
 
       assert message == "Failure - Potential Error Message"
     end
@@ -234,8 +235,7 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:ok, response} =
-               PremiumSubscriptions.fetch_subscriptions()
+      assert {:ok, response} = PremiumSubscriptions.fetch_subscriptions()
 
       assert Enum.count(response["responses"]) == 1
     end
@@ -249,8 +249,7 @@ defmodule AtEx.Gateway.SmsTest do
           }
       end)
 
-      assert {:error, response} =
-               PremiumSubscriptions.fetch_subscriptions()
+      assert {:error, response} = PremiumSubscriptions.fetch_subscriptions()
 
       assert response.message == "Request is missing required query parameter 'shortCode'"
     end

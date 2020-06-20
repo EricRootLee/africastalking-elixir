@@ -1,6 +1,6 @@
 defmodule AtEx.Gateway.Sms.PremiumSubscriptions do
   use AtEx.Gateway.Base, url: "https://api.sandbox.africastalking.com/version1"
-    # Checkout token endpoints
+  # Checkout token endpoints
   @live_token_url "https://api.africastalking.com/checkout/token"
   @sandbox_token_url "https://api.sandbox.africastalking.com/checkout/token"
 
